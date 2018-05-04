@@ -3,8 +3,8 @@ FROM ubuntu
 # Install required packages
 RUN apt-get update && \
     apt-get install -y \
-      build-essential \
       cmake \
+      g++ \
       git \
       libbz2-dev \
       libfluidsynth-dev \
@@ -20,6 +20,7 @@ RUN apt-get update && \
       libsndfile1-dev \
       libwildmidi-dev \
       nasm \
+      make \
       tar \
       timidity \
       zlib1g-dev \
