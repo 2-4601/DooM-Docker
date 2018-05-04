@@ -18,19 +18,11 @@ echo "Checking out the latest GZDooM release tag"
 RELEASE_TAG="$(git tag -l 'g*' | grep -E '^g[0-9]+([.][0-9]+)*$' | sort -V | tail -n 1)" && \
 git checkout --force ${RELEASE_TAG}
 
-echo "Fetching latest FMOD"
-curl -L -O http://zdoom.org/files/fmod/fmodapi44464linux.tar.gz
-tar -xzfv fmodapi44464linux.tar.gz
-rm -f fmodapi44464linux.tar.gz
-
 echo "Compiling GZDooM"
 mkdir -vp ${BASE_DIR}/${GIT_REPOSITORY_DIR}/build
 cd ${BASE_DIR}/${GIT_REPOSITORY_DIR}/build
 make clean
-cmake \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DFMOD_LIBRARY="${BASE_DIR}"/gzdoom/fmodapi44464linux/api/lib/libfmodex"${BUILD_ARCHITECTURE}"-4.44.64.so \
-  -DFMOD_INCLUDE_DIR="${BASE_DIR}"/gzdoom/fmodapi44464linux/api/inc ..
+cmake .. -DCMAKE_BUILD_TYPE=Release
 make
 echo "Compiling finished"
 
@@ -40,7 +32,7 @@ BINARY_RELEASE_DIR=output/gzdoom-bin-"${VERSION}"-"${BUILD_OS}""${BUILD_ARCHITEC
 mkdir -vp ${BASE_DIR}/${BINARY_RELEASE_DIR}
 
 echo "Installing binary release"
-cp -v ${BASE_DIR}/${GIT_REPOSITORY_DIR}/{build/{gzdoom,gzdoom.pk3,lights.pk3,brightmaps.pk3,output_sdl/liboutput_sdl.so},fmodapi44464linux/api/lib/libfmodex"${BUILD_ARCHITECTURE}"-4.44.64.so} \
+cp -v ${BASE_DIR}/${GIT_REPOSITORY_DIR}/build/{gzdoom,gzdoom.pk3,lights.pk3,brightmaps.pk3,output_sdl/liboutput_sdl.so} \
       ${BASE_DIR}/${BINARY_RELEASE_DIR}
 
 echo "Copying SDL and sndio to binary release directory"
