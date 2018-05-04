@@ -36,9 +36,8 @@ cp -v ${BASE_DIR}/${GIT_REPOSITORY_DIR}/build/{gzdoom,gzdoom.pk3,lights.pk3,brig
       ${BASE_DIR}/${BINARY_RELEASE_DIR}
 
 echo "Copying SDL and sndio to binary release directory"
-cp -v /usr/lib/x86_64-linux-gnu/libsndio.so.6.1 /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.4.0 ${BASE_DIR}/${BINARY_RELEASE_DIR}
+cp -v /usr/lib/x86_64-linux-gnu/{libsndio.so.6.1,libSDL2-2.0.so.0} ${BASE_DIR}/${BINARY_RELEASE_DIR}
 cd ${BASE_DIR}/${BINARY_RELEASE_DIR}
-ln -s libSDL2-2.0.so.0.4.0 libSDL2-2.0.so.0
 
 echo "Fixing permissions for output volume directory"
 chown -R ${USERID}.${USERID} ${BASE_DIR}/${BINARY_RELEASE_DIR}
