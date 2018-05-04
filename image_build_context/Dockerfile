@@ -26,12 +26,7 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # Initial settings
-WORKDIR /gzdoom_build
-
-# Fetch GZDooM
-RUN git clone git://github.com/coelckers/gzdoom.git
-
-RUN mkdir -p output
+WORKDIR /gzdoom
 
 ADD build_gzdoom.sh .
 

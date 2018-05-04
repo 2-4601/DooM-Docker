@@ -15,7 +15,7 @@ $ docker build --file Dockerfile --tag gzdoom .
 $ ./run_container_and_build_gzdoom.sh
 ```
 
-- Binaries can be found in the `output/` directory
+- Binaries can be found in the `build/binaries` directory
 
 *******************************************************************************
 
@@ -44,5 +44,5 @@ Now to compile GZDooM with the Docker container run the script:
 $ ./run_container_and_build_gzdoom.sh
 ```
 
-This takes a few minutes. Binaries will go to the `output/` directory.
+This takes a few minutes. Binaries will go to the `build/binaries` directory.
 

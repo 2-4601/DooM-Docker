@@ -1,13 +1,13 @@
 #!/bin/sh
 
-mkdir -p output
+mkdir -p build
 
 docker run \
   --rm \
   --tty \
   --interactive \
   --name gzdoom \
-  --env USERID=$(id -u) \
-  --workdir /gzdoom_build \
-  --volume $(pwd)/output:/gzdoom_build/output \
+  --workdir /gzdoom \
+  --user=$(id --user):$(id --group) \
+  --volume $(pwd)/build:/gzdoom/build \
   gzdoom
