@@ -2,12 +2,8 @@
 
 BASE_DIR=/gzdoom/build
 SRC_DIR=src
-BUILD_OS="$(uname -s | tr '[:upper:]' '[:lower:]')"
-if [ "$(uname -m)" = "x86_64" ]; then
-    BUILD_ARCHITECTURE='64'
-else
-    BUILD_ARCHITECTURE=''
-fi
+BUILD_OS="$(uname --kernel-name | tr '[:upper:]' '[:lower:]')"
+BUILD_ARCHITECTURE="$(uname --machine)"
 
 cd ${BASE_DIR}
 
@@ -32,7 +28,7 @@ echo "Compiling finished"
 echo "Preparing binary release"
 mkdir -p ${BASE_DIR}/binaries
 VERSION=$(echo ${RELEASE_TAG} | sed 's/^g//;s/\./-/g')
-BINARY_RELEASE_DIR=binaries/gzdoom-bin-"${VERSION}"-"${BUILD_OS}""${BUILD_ARCHITECTURE}"
+BINARY_RELEASE_DIR=binaries/gzdoom-bin-"${VERSION}"-"${BUILD_OS}"-"${BUILD_ARCHITECTURE}"
 mkdir -vp ${BASE_DIR}/${BINARY_RELEASE_DIR}
 
 echo "Installing binary release"
