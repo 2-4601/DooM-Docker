@@ -1,13 +1,13 @@
 #!/bin/sh
 
-mkdir -p build
+mkdir -p build/gzdoom/patches
 
 docker run \
   --rm \
   --tty \
   --interactive \
   --name gzdoom \
-  --workdir /gzdoom \
+  --workdir /build/gzdoom \
   --user=$(id --user):$(id --group) \
-  --volume $(pwd)/build:/gzdoom/build \
+  --volume $(pwd)/build:/build \
   gzdoom

@@ -1,5 +1,4 @@
-A Dockerfile and build script to compile the latest version of GZDooM for Linux.
-Tested on Ubuntu 16.04 as the host OS.
+A Dockerfile and build script to compile the latest version of GZDooM for Ubuntu Linux.
 
 # Installation
 
@@ -15,7 +14,7 @@ $ docker build --file Dockerfile --tag gzdoom .
 $ ./run_container_and_build_gzdoom.sh
 ```
 
-- Binaries can be found in the `build/binaries` directory
+- Binaries can be found in the `build/gzdoom/binaries` directory
 
 *******************************************************************************
 
@@ -44,5 +43,5 @@ Now to compile GZDooM with the Docker container run the script:
 $ ./run_container_and_build_gzdoom.sh
 ```
 
-This takes a few minutes. Binaries will go to the `build/binaries` directory.
+This takes a few minutes. Binaries will go to the `build/gzdoom/binaries` directory.
 
