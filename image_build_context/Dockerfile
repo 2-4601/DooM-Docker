@@ -21,6 +21,7 @@ RUN apt-get update && \
       libsdl2-mixer-dev \
       libsdl2-net-dev \
       libsndfile1-dev \
+      libvpx-dev \
       make \
       nasm \
       tar \
