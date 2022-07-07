@@ -35,7 +35,7 @@ echo "Fetching GZDooM sources"
 if [ -d gzdoom ]; then
   rm -rf gzdoom
 fi
-git clone git://github.com/coelckers/gzdoom.git gzdoom
+git clone https://github.com/coelckers/gzdoom.git gzdoom
 cd gzdoom || exit 1
 
 if [ -n "${1}" ]; then
