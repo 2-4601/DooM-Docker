@@ -22,7 +22,7 @@ git clone https://github.com/team-eternity/eternity.git
 cd eternity || exit 1
 git submodule init
 git config submodule.adlmidi.url ../libADLMIDI
-git submodule update
+git -c protocol.file.allow=always submodule update
 
 if [ -n "${1}" ]; then
   release_tag="${1}"
