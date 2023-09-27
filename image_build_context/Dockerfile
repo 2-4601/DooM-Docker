@@ -22,6 +22,7 @@ RUN apt-get update && \
       libsdl2-net-dev \
       libsndfile1-dev \
       libvpx-dev \
+      libwebp-dev \
       make \
       nasm \
       tar \
