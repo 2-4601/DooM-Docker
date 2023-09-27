@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 base_dir=/build/gzdoom
 src_dir="${base_dir}"/src
 build_os="$(uname --kernel-name | tr '[:upper:]' '[:lower:]')"
@@ -38,7 +40,7 @@ fi
 git clone https://github.com/coelckers/gzdoom.git gzdoom
 cd gzdoom || exit 1
 
-if [ -n "${1}" ]; then
+if [ -n "${1+x}" ]; then
   release_tag="${1}"
   echo -n "Trying to check out tag: ${release_tag}..."
   if git checkout --force "${release_tag}"; then
@@ -82,7 +84,7 @@ echo "Compiling finished"
 echo "Preparing binary release"
 now=$(date +%F_%H.%M.%S)
 version=$(echo "${release_tag}" | sed 's/^g//;s/\./-/g')
-binary_release_dir="${base_dir}/binaries/gzdoom-bin-${version}-${patched}${build_os}-${build_architecture}_${now}"
+binary_release_dir="${base_dir}/binaries/gzdoom-bin-${version}-${patched-}${build_os}-${build_architecture}_${now}"
 mkdir -vp "${binary_release_dir}"
 
 echo "Installing binary release"

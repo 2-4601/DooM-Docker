@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 base_dir=/build/eternity-engine
 src_dir="${base_dir}"/src
 build_os="$(uname --kernel-name | tr '[:upper:]' '[:lower:]')"
@@ -24,7 +26,7 @@ git submodule init
 git config submodule.adlmidi.url ../libADLMIDI
 git -c protocol.file.allow=always submodule update
 
-if [ -n "${1}" ]; then
+if [ -n "${1+x}" ]; then
   release_tag="${1}"
   echo -n "Trying to check out tag: ${release_tag}..."
   if git checkout --force "${release_tag}"; then
@@ -63,7 +65,7 @@ echo "Compiling Eternity Engine"
 mkdir -pv ../build
 cd ../build || exit 1
 now=$(date +%F_%H.%M.%S)
-binary_release_dir="${binary_dir}/eternity-engine-bin-${release_tag}-${patched}${build_os}-${build_architecture}_${now}"
+binary_release_dir="${binary_dir}/eternity-engine-bin-${release_tag}-${patched-}${build_os}-${build_architecture}_${now}"
 mkdir -pv "${binary_release_dir}"
 cmake ../eternity -DCMAKE_INSTALL_PREFIX="${binary_release_dir}"
 make -j$jobs
