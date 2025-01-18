@@ -33,5 +33,6 @@ RUN apt-get update && \
 # Initial settings
 RUN mkdir /build_scripts
 ADD build.sh build_gzdoom.sh build_eternity-engine.sh /build_scripts/
+RUN chmod ugo+rx /build_scripts/*.sh
 
 ENTRYPOINT ["/build_scripts/build.sh"]
